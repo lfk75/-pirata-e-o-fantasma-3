@@ -4,6 +4,8 @@ class Jogo {
  this.key2 =0;
  this.key3 =0;
 
+ this.contagem=0;
+
  this.inimigo = new Boss();
 
   }
@@ -101,7 +103,7 @@ class Jogo {
   imageMode(CENTER)
   image(bau2,290,-290,350,350);
 
-  image(pirata,275,0-270,650,650);
+  image(pirata,275,-270,650,650);
 
   fill("white")
   textSize(20)
@@ -109,19 +111,63 @@ class Jogo {
   text("e roubar meu tesouro, voce vai ver agora",70,-40);
   text("eu vou separar sua alma pedaço por pedaço",70,-20);
 
-  text("aperte spaço para começar",150,30);
+  text("aperte para cima para começar",150,30);
   }
 
   boss(){
+
+ this.contagem += 1
+
   player.visible=true;
-  if(frameCount >  20 && frameCount < 600){
+  if(this.contagem >  20 && this.contagem < 500){
   this.inimigo.enemy1();
   }
 
-  if(frameCount >  620 && frameCount < 1200){
+  if(this.contagem >  500 && this.contagem < 1100){
   this.inimigo.enemy2();
   }
 
+  if(keyWentDown("s")){
+  this.contagem = 1300;
+  }
+
+  if(this.contagem >  1100 && this.contagem < 1150){
+  this.inimigo.enemy3();
+    }
+
+  if(this.contagem >  1150 && this.contagem < 1200){
+  this.inimigo.enemy32();
+  } 
+
+  if(this.contagem >  1200 && this.contagem < 1250){
+    this.inimigo.enemy33();
+    } 
+
+  if(this.contagem >  1250 && this.contagem < 1300){
+    this.inimigo.enemy34();
+    } 
+
+  if(this.contagem >  1300 && this.contagem < 1350){
+    this.inimigo.enemy33();
+    this.inimigo.enemy32();
+    } 
+
+  if(this.contagem >  1350 && this.contagem < 1400){
+    this.inimigo.enemy3();
+    this.inimigo.enemy34();
+    } 
+
+  if(this.contagem >  1400 && this.contagem < 1450){
+    this.inimigo.enemy3();
+    this.inimigo.enemy33();
+    this.inimigo.enemy32();
+    this.inimigo.enemy34();
+    } 
+
+    if(this.contagem === 1550){
+      end = 1;
+    }
+  //console.log(this.contagem)
  
 
   walker2();
@@ -133,11 +179,20 @@ class Jogo {
 
   gameover(){
   player.visible = false
-  enemy.destroy();
-  enemi2.destroy();
-  
+  if(enemy !==undefined){
+    enemy.destroy()}
+  if(enemi2 !==undefined){
+   enemi2.destroy()}
+   player.visible = false
+  if(enemi3 !==undefined){
+   enemi3.destroy()}
+   if(enemi32 !==undefined){
+    enemi32.destroy()}
+   if(enemi33 !==undefined){
+    enemi33.destroy()}
   }
 
+  
 
 
    puzle() {

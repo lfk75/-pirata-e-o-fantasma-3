@@ -1,12 +1,15 @@
 var bg1, pl1, pl2, bg2;
 var back;
+var end =0;
 
 var player;
 var game
 var bau,tesouro;
 var enemy, ancora;
 var enemi2, lanca;
-var bad,bad2,bad3,bad4;
+var enemi3,enemi32,enemi33,enemi34, hok, hok2, hok3,hok4;
+var warn, warn2,warn3;
+var bad,bad2,bad3,bad4, bad5,bad6;
 
 var box1,box2, box3;
 var bx1,bx2,bx3;
@@ -61,6 +64,23 @@ soul2 = loadImage("assets/pixil-frame-0 (15).png")
 ancora = loadImage("assets/pixil-frame-0 (16).png");
 
 lanca = loadImage("assets/pixil-frame-0 (17).png");
+
+hok = loadImage("assets/pixil-frame-0 (18).png")
+
+hok2 = loadImage("assets/pixil-frame-0 (19).png")
+
+hok3 = loadImage("assets/pixil-frame-0 (20).png")
+
+hok4 = loadImage("assets/pixil-frame-0 (21).png")
+
+warn = loadImage("assets/pixil-frame-0 (22).png");
+
+warn2 = loadImage("assets/pixil-frame-0 (23).png");
+
+warn3 = loadImage("assets/pixil-frame-0 (24).png");
+
+
+
 }
 
 
@@ -70,6 +90,10 @@ function setup() {
   game = new Jogo();
   bad = new Group();
   bad2 = new Group();
+  bad3 = new Group();
+  bad4 = new Group();
+  bad5 = new Group();
+  bad6 = new Group();
 
   back = createSprite(300,300,0,0);
   back.addImage("navio", bg1);
@@ -241,13 +265,32 @@ camera.position.y = -300*/
 
   if(gameState === 5){
     player.addImage(soul);
+    camera.position.x=300;
+    camera.position.y=-300
   game.boss();
   background("black");
 
-  if(player.isTouching(bad) ||player.isTouching(bad2)){
+  if(player.isTouching(bad)){
   gameState = 6;
   }
+
+  if(player.isTouching(bad2)){
+    gameState = 6;
+    }
+ 
+  if(player.isTouching(bad3)){
+    gameState = 6;
   }
+   if(end === 1){
+  gameState = 7;
+   } 
+
+
+  }
+
+  
+
+  
 
   if(gameState === 6 ){
   game.gameover();
@@ -256,8 +299,17 @@ camera.position.y = -300*/
   fill("white")
   textSize(40)
   text(" voce perdeu ",100,-200);
-  
   }
+
+ 
+if(gameState === 7){
+  background("black");
+player.visible=false;
+textSize(30);
+fill("yellow")
+text("to be continued", 200,-300);
+}
+    
   
 
   drawSprites();
@@ -319,7 +371,7 @@ function walker2(){
     
   }
 
-  if (keyIsDown(LEFT_ARROW)) {
+  if (keyIsDown(LEFT_ARROW) && player.x > 0) {
     player.position.x -= 10;
     player.addImage("lnk", soul);
     player.scale =0.5
