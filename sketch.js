@@ -8,6 +8,8 @@ var bau,tesouro;
 var enemy, ancora;
 var enemi2, lanca;
 var enemi3,enemi32,enemi33,enemi34, hok, hok2, hok3,hok4;
+var enemi4 ,shak, teleg= 0;
+var enemi5,enemi52,enemi53,enemi54 ,bumer1,bumer2;
 var warn, warn2,warn3;
 var bad,bad2,bad3,bad4, bad5,bad6;
 
@@ -79,6 +81,11 @@ warn2 = loadImage("assets/pixil-frame-0 (23).png");
 
 warn3 = loadImage("assets/pixil-frame-0 (24).png");
 
+shak = loadImage("assets/pixil-frame-0 (25).png");
+
+bumer1 = loadAnimation("./assets/pixil-frame-0_(26).png","./assets/pixil-frame-0_(27).png");
+
+
 
 
 }
@@ -93,7 +100,7 @@ function setup() {
   bad3 = new Group();
   bad4 = new Group();
   bad5 = new Group();
-  bad6 = new Group();
+ 
 
   back = createSprite(300,300,0,0);
   back.addImage("navio", bg1);
@@ -193,8 +200,8 @@ function draw() {
 
 if(gameState === 0 ) {
 
-/*gameState=3
-camera.position.y = -300*/
+gameState=3
+camera.position.y = -300
  game.intro();
  if (keyWentDown("space")) {
   gameState = 1
@@ -349,7 +356,7 @@ function walker(){
 
 function walker2(){
 
-  if (keyIsDown(UP_ARROW)) {
+  if (keyIsDown(UP_ARROW) && player.x > -400) {
     player.position.y -= 10;
     player.addImage("lnk", soul);
     player.setCollider("rectangle",12,-15,65,65);
@@ -357,17 +364,18 @@ function walker2(){
     
   }
 
-  if (keyIsDown(DOWN_ARROW)) {
+  if (keyIsDown(DOWN_ARROW) && player.y < 0) {
     player.position.y += 10;
     
     
   }
 
-  if (keyIsDown(RIGHT_ARROW)) {
+  if (keyIsDown(RIGHT_ARROW) && player.x < 600) {
     player.position.x += 10;
     player.addImage("lnk", soul);
     player.setCollider("rectangle",12,-15,65,65);
     player.scale = 0.5
+    teleg=1
     
   }
 
@@ -376,7 +384,7 @@ function walker2(){
     player.addImage("lnk", soul);
     player.scale =0.5
     player.setCollider("rectangle",12,-15,65,65);
-    
+    teleg=2
   }
 
 }
@@ -387,7 +395,6 @@ function easteregg(){
    
   }
 }
-
 
 
 

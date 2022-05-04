@@ -118,18 +118,19 @@ class Jogo {
 
  this.contagem += 1
 
+ if(keyWentDown("s")){this.contagem=1450}
+
   player.visible=true;
   if(this.contagem >  20 && this.contagem < 500){
-  this.inimigo.enemy1();
+  this.inimigo.enemy5 ();
+ 
   }
 
   if(this.contagem >  500 && this.contagem < 1100){
   this.inimigo.enemy2();
   }
 
-  if(keyWentDown("s")){
-  this.contagem = 1300;
-  }
+  
 
   if(this.contagem >  1100 && this.contagem < 1150){
   this.inimigo.enemy3();
@@ -164,11 +165,11 @@ class Jogo {
     this.inimigo.enemy34();
     } 
 
-    if(this.contagem === 1550){
-      end = 1;
+  if(this.contagem > 1450 && this.contagem < 1800){
+   this.inimigo.enemy4();
     }
-  //console.log(this.contagem)
- 
+  console.log(this.contagem)
+  console.log(teleg)
 
   walker2();
   }
@@ -193,7 +194,7 @@ class Jogo {
   }
 
   
-
+  
 
    puzle() {
   fill("red");

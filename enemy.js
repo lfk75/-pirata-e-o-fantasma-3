@@ -55,6 +55,7 @@ enemy3(){
  enemi3.setCollider("rectangle",-10,20,250,240);
  enemi3.scale = 0.7;
  enemi3.velocityY = 85;
+ enemi3.lifetime = 300
 
  bad3.add(enemi3)
   }
@@ -73,6 +74,8 @@ enemy3(){
   enemi32.setCollider("rectangle",-10,20,240,240);
   enemi32.velocityX = -85;
   enemi32.velocityY=0
+  enemi32.lifetime = 200
+
   bad3.add(enemi32);
      }
  }
@@ -90,6 +93,7 @@ enemy3(){
   enemi33.setCollider("rectangle",-10,20,240,240);
   enemi33.velocityX = -85;
   enemi33.velocityY=0
+  enemi33.lifetime = 300
   bad3.add(enemi33);
  
      }
@@ -108,9 +112,46 @@ enemy34(){
   enemi34.setCollider("rectangle",-10,20,240,240);
   enemi34.velocityY = -85;
   enemi34.velocityX=0 
+  enemi34.lifetime = 300
   bad3.add(enemi33);
   }
 }
 
+enemy4(){
+  this.warning = createSprite(300,-500,70,70);
+  this.warning.addImage(warn2);
+  this.warning.lifetime= 1
+  this.warning.scale = 0.8
+  //this.teleguiado();
+  if(frameCount % 100 === 0){
+  enemi4 = createSprite(300,-600);
+  enemi4.addImage(shak);
+  enemi4.scale = 2;
+  enemi4.debug=true
+  enemi4.setCollider("rectangle",0,0,140,100);
+  enemi4.velocityY = 16
+  enemi4.lifetime= 300
+
+  this.teleguiado();
+  }
+}
+
+
+teleguiado(){
+  if(teleg===2){
+    enemi4.position.x = 150
+  }
+  if(teleg===1){
+    enemi4.position.x = 450
+  }
+}
+
+
+enemy5(){  
+enemi5 = createSprite(-100,-200,);
+enemi5.addAnimation("bomer",bumer1);
+
+
+}
 
 }
