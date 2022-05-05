@@ -445,6 +445,8 @@ if(barra2.isTouching(barra) && keyWentDown("space")){
 gameState = 8
 }else if(keyWentDown("space")){
  gameState=6
+ barra.visible=false
+ barra2.visible=false
 }
 
 }

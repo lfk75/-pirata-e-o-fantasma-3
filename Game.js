@@ -118,7 +118,7 @@ class Jogo {
 
  this.contagem += 1
 
- if(keyWentDown("s")){this.contagem=2000}
+if(keyWentDown("s")){this.contagem=1800}
 
   player.visible=true;
   if(this.contagem >  20 && this.contagem < 500){
@@ -126,7 +126,7 @@ class Jogo {
  
   }
 
-  if(this.contagem >  500 && this.contagem < 1100){
+  if(this.contagem >  550 && this.contagem < 1100){
   this.inimigo.enemy2();
   }
 
@@ -169,17 +169,17 @@ class Jogo {
    this.inimigo.enemy4();
     }
 
-  if(this.contagem > 1800 && this.contagem < 1802 ){
+  if(this.contagem > 1850 && this.contagem < 1852 ){
     this.inimigo.enemy5();
     
       }
 
-  if(this.contagem > 1880 && this.contagem < 1882 ){
+  if(this.contagem > 1950 && this.contagem < 1952 ){
     this.inimigo.enemy52();
     
       }
 
-  if(this.contagem === 2000){end = 1}
+  if(this.contagem === 2100){end = 1}
 
 console.log(this.contagem)
   console.log(teleg)
