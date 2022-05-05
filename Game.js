@@ -118,11 +118,11 @@ class Jogo {
 
  this.contagem += 1
 
- if(keyWentDown("s")){this.contagem=1450}
+ if(keyWentDown("s")){this.contagem=2000}
 
   player.visible=true;
   if(this.contagem >  20 && this.contagem < 500){
-  this.inimigo.enemy5 ();
+  this.inimigo.enemy1 ();
  
   }
 
@@ -168,13 +168,61 @@ class Jogo {
   if(this.contagem > 1450 && this.contagem < 1800){
    this.inimigo.enemy4();
     }
-  console.log(this.contagem)
+
+  if(this.contagem > 1800 && this.contagem < 1802 ){
+    this.inimigo.enemy5();
+    
+      }
+
+  if(this.contagem > 1880 && this.contagem < 1882 ){
+    this.inimigo.enemy52();
+    
+      }
+
+  if(this.contagem === 2000){end = 1}
+
+console.log(this.contagem)
   console.log(teleg)
 
   walker2();
   }
 
+ last(){
+  player.visible=false; 
+  fill("withe")
+  text("spaço para atacar",400,-200)
+  textSize(30);
+ 
+  fill("yellow")
+  text("voce não me derrotara", 100,-500);
+  imageMode(CENTER)
+  image(pirata,275,-270,400,400);
 
+  barra.visible=true
+  barra2.visible=true
+  this.contagem=0
+  fim();
+ }
+
+ almost(){
+   this.contagem += 1
+  textSize(30);
+  fill("yellow")
+  text("ahh minha fraqueza a morte", 100,-500);
+  imageMode(CENTER)
+  image(pirarr,275,-270,400,400);
+  barra.visible=false
+  barra2.visible=false 
+  if(this.contagem > 70){endu=2}
+  console.log(this.contagem)
+ }
+
+ end(){
+   
+  imageMode(CENTER)
+  image(ouro,300,-300,600,600)
+  image(bau3,300,-300,400,400);
+ }
 
 
 
@@ -191,6 +239,19 @@ class Jogo {
     enemi32.destroy()}
    if(enemi33 !==undefined){
     enemi33.destroy()}
+    if(enemi34 !==undefined){
+      enemi34.destroy()}
+  if(enemi4 !==undefined){
+    enemi4.destroy()}
+  if(enemi5 !==undefined){
+    enemi5.destroy()}
+  if(enemi52 !==undefined){
+    enemi52.destroy()}
+  if(enemi53 !==undefined){
+    enemi53.destroy()}
+  if(enemi54 !==undefined){
+    enemi54.destroy()}
+
   }
 
   

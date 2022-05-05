@@ -1,6 +1,7 @@
 var bg1, pl1, pl2, bg2;
 var back;
 var end =0;
+var endu =0;
 
 var player;
 var game
@@ -9,7 +10,7 @@ var enemy, ancora;
 var enemi2, lanca;
 var enemi3,enemi32,enemi33,enemi34, hok, hok2, hok3,hok4;
 var enemi4 ,shak, teleg= 0;
-var enemi5,enemi52,enemi53,enemi54 ,bumer1,bumer2;
+var enemi5,enemi52,enemi53,enemi54 ,bumer1,bumer2,bumer;
 var warn, warn2,warn3;
 var bad,bad2,bad3,bad4, bad5,bad6;
 
@@ -27,8 +28,10 @@ var door;
  var vc2;
  var objeto;
  var egg
- var pirata;
+ var pirata, pirarr;
  var soul, soul2, s2
+ var barra, barra2;
+ var ouro, bau3;
 
 var gameState = 0
 
@@ -83,11 +86,15 @@ warn3 = loadImage("assets/pixil-frame-0 (24).png");
 
 shak = loadImage("assets/pixil-frame-0 (25).png");
 
-bumer1 = loadAnimation("./assets/pixil-frame-0_(26).png","./assets/pixil-frame-0_(27).png");
+bumer1 = loadImage("assets/pixil-frame-0 (26).png")
 
+bumer2 = loadImage("assets/pixil-frame-0 (27).png");
 
+pirarr = loadImage("assets/pixil-frame-0 (28).png")
 
+ouro = loadImage("assets/pixil-frame-0 (29).png")
 
+bau3 = loadImage("assets/pixil-frame-0 (30).png")
 }
 
 
@@ -121,7 +128,7 @@ function setup() {
 
   door = createSprite(300,-30,20,20);
   objeto = createSprite(310,-410,1,1);
-  objeto.debug=true
+ // objeto.debug=true
   objeto.setCollider("rectangle", 0,-400,400,400);
  
 
@@ -175,7 +182,7 @@ function setup() {
   player = createSprite(200,300,20,20);
   player.addImage("lnk", pl1);
   player.scale =0.11
-  player.debug = true
+ // player.debug = true
   player.setCollider("rectangle",-40,0,500,600);
   player.visible = false
 
@@ -183,10 +190,17 @@ function setup() {
   vc2.addImage("i", vc);
   vc2.scale = 2
 
-  s2 = createSprite(200,-150);
+  s2 = createSprite(100,-200);
   s2.addImage(soul2);
   s2.scale = 0.15
 
+  barra = createSprite(300,-70,60,30);
+  barra.shapeColor = "lightgreen"
+  barra.visible=false;
+
+  barra2 = createSprite(199,-70,20,30);
+  barra2.shapeColor = "red"
+  barra2.visible=false;
   
   
 }
@@ -200,8 +214,7 @@ function draw() {
 
 if(gameState === 0 ) {
 
-gameState=3
-camera.position.y = -300
+   
  game.intro();
  if (keyWentDown("space")) {
   gameState = 1
@@ -288,6 +301,12 @@ camera.position.y = -300
   if(player.isTouching(bad3)){
     gameState = 6;
   }
+  if(player.isTouching(bad4)){
+    gameState = 6;
+  }
+  if(player.isTouching(bad5)){
+    gameState = 6;
+  }
    if(end === 1){
   gameState = 7;
    } 
@@ -304,23 +323,49 @@ camera.position.y = -300
   s2.visible = true
   background("black");
   fill("white")
+  text(" aperte spaço para jogar novamente ",100,-100);
   textSize(40)
-  text(" voce perdeu ",100,-200);
+  text(" voce perdeu ",50,-300);
+  if (keyWentDown("space")) {
+    gameState=3 
+   game.contagem =0  }
+  
   }
 
  
 if(gameState === 7){
   background("black");
-player.visible=false;
-textSize(30);
-fill("yellow")
-text("to be continued", 200,-300);
+  game.last();
 }
-    
+  
+ 
+if(gameState === 8){
+  background("black");
+  game.almost();
+  if(endu === 2){
+    gameState = 16
+  }
+}
+  if(gameState===16){
+  game.end();
+  }
+
+
+
+
+
+
+  
   
 
   drawSprites();
-  
+  if(gameState ===16){
+    textSize(20)
+    fill("withe")
+    text("assim o fantasma foi derrotado",150,-200)
+    text("e o pirata ficou com todo seu tesouro",150,-170)
+    text("FIM",300,-140)
+  }
 }
 // FIM DE GAME
 
@@ -386,6 +431,21 @@ function walker2(){
     player.setCollider("rectangle",12,-15,65,65);
     teleg=2
   }
+
+}
+
+function fim(){
+ if(barra2.x > 400){
+  barra2.velocityX=-9
+  }
+if(barra2.x < 200){
+  barra2.velocityX=9
+  }
+if(barra2.isTouching(barra) && keyWentDown("space")){
+gameState = 8
+}else if(keyWentDown("space")){
+ gameState=6
+}
 
 }
 

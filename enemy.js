@@ -132,6 +132,7 @@ enemy4(){
   enemi4.velocityY = 16
   enemi4.lifetime= 300
 
+  bad4.add(enemi4);
   this.teleguiado();
   }
 }
@@ -148,10 +149,54 @@ teleguiado(){
 
 
 enemy5(){  
-enemi5 = createSprite(-100,-200,);
-enemi5.addAnimation("bomer",bumer1);
+  
+enemi5 = createSprite(-100,-150,);
+enemi5.addImage(bumer1);
+enemi5.scale=0.8;
+enemi5.velocityX=15
+enemi5.debug=true
+enemi5.setCollider("rectangle",0,0,253,199);
+
+
+enemi52 = createSprite(700,-350)
+enemi52.addImage(bumer2);
+enemi52.scale=0.8;
+enemi52.debug=true
+enemi52.setCollider("rectangle",0,0,253,199);
+enemi52.velocityX=-15
+
+bad5.add(enemi5)
+bad5.add(enemi52)
 
 
 }
+
+enemy52(){  
+  
+  enemi53 = createSprite(700,-150);
+  enemi53.addImage(bumer2);
+  enemi53.scale=0.9; 
+  enemi53.velocityX=-15
+  enemi53.velocityX -= 0.5
+  enemi53.debug=true
+  enemi52.setCollider("rectangle",0,0,253,199);
+  
+  
+  enemi54 = createSprite(-100,-350,)
+  enemi54.addImage(bumer1);
+  enemi54.scale=0.9;
+  enemi54.debug=true
+  enemi52.setCollider("rectangle",0,0,253,199);
+  enemi54.velocityX=15
+  
+  bad5.add(enemi53)
+  bad5.add(enemi54)
+
+
+  //enemi5.addAnimation("bomer",bumer1);
+  }
+
+
+
 
 }
