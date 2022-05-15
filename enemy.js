@@ -154,14 +154,13 @@ enemi5 = createSprite(-100,-150,);
 enemi5.addImage(bumer1);
 enemi5.scale=0.8;
 enemi5.velocityX=12
-enemi5.debug=true
 enemi5.setCollider("rectangle",0,0,230,150);
 
 
 enemi52 = createSprite(700,-350)
 enemi52.addImage(bumer2);
 enemi52.scale=0.8;
-enemi52.debug=true
+
 enemi52.setCollider("rectangle",0,0,230,150);
 enemi52.velocityX=-12
 
@@ -193,7 +192,7 @@ enemy52(){
   bad5.add(enemi54)
 
 
-  //enemi5.addAnimation("bomer",bumer1);
+  
   }
 
 
